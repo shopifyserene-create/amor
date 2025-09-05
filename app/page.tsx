@@ -215,7 +215,7 @@ export default function SereneDigitalGift() {
         {/* Steps */}
         {step === 1 && (
           <div>
-            <h3 className="text-2xl font-bold mb-4">Paso 1: Recipient Name</h3>
+            <h3 className="text-2xl font-bold mb-4">Paso 1: Nombre de esa persona especial</h3>
             <Input
               placeholder="Nombre del destinatario"
               value={formData.recipientName}
@@ -234,7 +234,7 @@ export default function SereneDigitalGift() {
 
         {step === 2 && (
           <div>
-            <h3 className="text-2xl font-bold mb-4">Paso 2: Sender Name</h3>
+            <h3 className="text-2xl font-bold mb-4">Paso 2: Con mucho cariño,</h3>
             <Input
               placeholder="Tu nombre"
               value={formData.senderName}

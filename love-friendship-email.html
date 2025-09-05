@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERENÉ - Amor & Amistad</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1C1C1C;
+            background-color: #FFFFFF;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+        }
+        
+        .hero-section {
+            position: relative;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+        
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #FFB6C1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* Added urgency banner styling */
+        .urgency-banner {
+            background: linear-gradient(45deg, #E63946, #FF6B6B);
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .offer-section {
+            padding: 40px 20px;
+            background-color: #FFFFFF;
+        }
+        
+        .offer-grid {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .offer-column {
+            display: table-cell;
+            width: 50%;
+            padding: 20px;
+            text-align: center;
+            vertical-align: top;
+            border: 2px solid #FFB6C1;
+            background-color: #FFFFFF;
+            position: relative;
+        }
+        
+        .offer-column:first-child {
+            border-right: 1px solid #FFB6C1;
+        }
+
+        /* Added bestseller badge */
+        .bestseller-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #E63946;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            transform: rotate(15deg);
+        }
+        
+        .offer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #E63946;
+            margin-bottom: 10px;
+        }
+        
+        .offer-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #1C1C1C;
+            margin-bottom: 15px;
+        }
+
+        /* Enhanced CTA button styling */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #E63946, #FF6B6B);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Enhanced digital gift section styling */
+        .digital-gift-section {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1C1C1C 0%, #2C2C2C 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .digital-gift-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="gift" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="%23E63946" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23gift)"/></svg>');
+        }
+
+        .digital-gift-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gift-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .digital-gift-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #FFB6C1;
+            margin-bottom: 15px;
+        }
+
+        .digital-gift-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            color: #FFFFFF;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .experience-highlight {
+            color: #E63946;
+            font-weight: 600;
+            background: linear-gradient(45deg, #E63946, #FFB6C1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Enhanced testimonial section */
+        .testimonial-section {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
+            text-align: center;
+        }
+        
+        .testimonial-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .testimonial-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: #1C1C1C;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta-section {
+            padding: 40px 20px;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+
+        /* Enhanced final CTA button */
+        .final-cta-button {
+            display: inline-block;
+            padding: 20px 45px;
+            background: linear-gradient(45deg, #E63946, #FF6B6B);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 35px;
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .final-cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .final-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.5);
+        }
+        
+        .product-showcase {
+            padding: 30px 20px;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .offer-grid {
+                display: block;
+            }
+            
+            .offer-column {
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .offer-column:first-child {
+                border-right: 2px solid #FFB6C1;
+            }
+            
+            .hero-title {
+                font-size: 24px;
+            }
+            
+            .hero-subtitle {
+                font-size: 14px;
+            }
+
+            .urgency-banner {
+                font-size: 14px;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Added urgency banner -->
+        <div class="urgency-banner">
+            ⏰ OFERTA LIMITADA - Solo hasta el 30 de Septiembre ⏰
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3x120%204-aNaCSLDQBMqyjUFl2n88i6utmPD9ou.png" alt="SERENÉ - Amor & Amistad" class="hero-image">
+            <div class="hero-overlay">
+                <h1 class="hero-title">77% OFF<br>3 Perfumes + Regalo Digital</h1>
+                <p class="hero-subtitle">Celebra el amor y la amistad con aroma a lujo</p>
+            </div>
+        </div>
+
+        <!-- Product Showcase -->
+        <div class="product-showcase">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3x120%206-6Jy5NZPUl3fuDLLGdl5r7Yxl9PEIyu.png" alt="3 Fragancias SERENÉ" class="product-image">
+        </div>
+
+        <!-- Offer Section -->
+        <div class="offer-section">
+            <div class="offer-grid">
+                <div class="offer-column">
+                    <!-- Added bestseller badge -->
+                    <div class="bestseller-badge">MÁS VENDIDO</div>
+                    <h3 class="offer-title">Kit 3 Fragancias</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 10px;">50 ml cada una</p>
+                    <div class="offer-price">$120.000</div>
+                    <!-- Added proper SERENÉ website link -->
+                    <a href="https://serene.com.co/products/kit-3-fragancias-50ml" class="cta-button">Comprar Kit 50ml</a>
+                </div>
+                <div class="offer-column">
+                    <h3 class="offer-title">Kit 3 Fragancias</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 10px;">100 ml cada una</p>
+                    <div class="offer-price">$150.000</div>
+                    <!-- Added proper SERENÉ website link -->
+                    <a href="https://serene.com.co/products/kit-3-fragancias-100ml" class="cta-button">Comprar Kit 100ml</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced digital gift section with better styling and prominence -->
+        <div class="digital-gift-section">
+            <div class="digital-gift-content">
+                <span class="gift-icon">🎁</span>
+                <h2 class="digital-gift-title">¡REGALO DIGITAL EXCLUSIVO!</h2>
+                <p class="digital-gift-text">
+                    Tu compra incluye un <span class="experience-highlight">regalo digital sorpresa</span> que transformará este 
+                    <span class="experience-highlight">Amor & Amistad</span> en una experiencia única e inolvidable.
+                </p>
+                <p style="color: #FFB6C1; font-size: 16px; font-weight: 600;">
+                    ✨ Solo disponible con tu compra ✨
+                </p>
+            </div>
+        </div>
+
+        <!-- Kept only the most impactful lifestyle image -->
+        <div class="testimonial-section">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13-1ge3llpLi2bGR92xEzyCcgAj9ocU4q.png" alt="Experiencia SERENÉ" class="testimonial-image">
+            <p class="testimonial-text">Miles ya están disfrutando la experiencia SERENÉ...</p>
+        </div>
+
+        <!-- Removed redundant product images, kept only the romantic one for emotional impact -->
+        <div class="product-showcase">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15-GgB58iTTdFureShqjZhewK74BnsHIi.png" alt="SERENÉ - Romance" class="product-image">
+        </div>
+
+        <!-- Final CTA Section -->
+        <div class="final-cta-section">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; color: #1C1C1C; margin-bottom: 20px;">
+                No dejes pasar esta oportunidad única
+            </h2>
+            <!-- Added proper SERENÉ website link and enhanced CTA text -->
+            <a href="https://serene.com.co/collections/amor-y-amistad" class="final-cta-button">
+                Quiero mi Kit + Regalo Digital 🎁
+            </a>
+            <p style="margin-top: 15px; font-size: 14px; color: #666;">
+                ⏰ Oferta válida hasta agotar existencias
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div style="padding: 20px; text-align: center; background-color: #1C1C1C; color: #FFFFFF;">
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 14px;">
+                <strong>SERENÉ</strong><br>
+                Celebra el amor y la amistad con aroma a lujo<br>
+                <!-- Added website link in footer -->
+                <a href="https://serene.com.co" style="color: #FFB6C1; text-decoration: none;">www.serene.com.co</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

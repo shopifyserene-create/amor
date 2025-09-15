@@ -181,11 +181,18 @@ export default function SereneDigitalGift() {
       <canvas ref={canvasRef} style={{ display: "none" }} />
 
       {/* Header */}
-      <div className="bg-red-600 bg-gradient-to-r from-red-600 to-pink-600 text-white py-8">
+      <div className="bg-red-600 bg-gradient-to-r from-red-600 to-pink-600 text-white py-12">
         <div className="container mx-auto px-4 text-center">
+          <div className="flex items-center justify-center mb-6">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-09-15%20155658-ZSgFzuPkhD8rFl0xFLkJYUx4yD6AuP.png"
+              alt="SERENÉ Logo"
+              className="h-16 w-auto bg-white px-4 py-2 rounded-lg shadow-lg"
+            />
+          </div>
           <div className="flex items-center justify-center gap-3 mb-4">
             <Gift className="w-8 h-8 text-white" />
-            <h1 className="text-3xl font-bold text-white">SERENÉ</h1>
+            <h1 className="text-3xl font-bold text-white">Regalo Digital Exclusivo</h1>
           </div>
           <h2 className="text-xl font-semibold mb-2 text-white">Dedicatoria Animada Interactiva</h2>
           <p className="text-white opacity-90">Crea una tarjeta digital única para acompañar tu regalo</p>
@@ -195,71 +202,114 @@ export default function SereneDigitalGift() {
       <div className="container mx-auto px-4 py-8 max-w-2xl">
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            {[1, 2, 3, 4].map((num) => (
+          <div className="flex items-center justify-between mb-4">
+            <div className="text-center">
               <div
-                key={num}
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= num ? "bg-red-500 text-white" : "bg-gray-300 text-gray-700"
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mb-2 ${
+                  step >= 1 ? "bg-red-500 text-white" : "bg-gray-300 text-gray-700"
                 }`}
               >
-                {num}
+                1
               </div>
-            ))}
+              <span className="text-xs font-medium text-gray-600">Nombres</span>
+            </div>
+            <div className="text-center">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mb-2 ${
+                  step >= 2 ? "bg-red-500 text-white" : "bg-gray-300 text-gray-700"
+                }`}
+              >
+                2
+              </div>
+              <span className="text-xs font-medium text-gray-600">Remitente</span>
+            </div>
+            <div className="text-center">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mb-2 ${
+                  step >= 3 ? "bg-red-500 text-white" : "bg-gray-300 text-gray-700"
+                }`}
+              >
+                3
+              </div>
+              <span className="text-xs font-medium text-gray-600">Tema</span>
+            </div>
+            <div className="text-center">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mb-2 ${
+                  step >= 4 ? "bg-red-500 text-white" : "bg-gray-300 text-gray-700"
+                }`}
+              >
+                4
+              </div>
+              <span className="text-xs font-medium text-gray-600">Mensaje</span>
+            </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-red-500 h-2 rounded-full" style={{ width: `${(step / 4) * 100}%` }} />
+          <div className="w-full bg-gray-200 rounded-full h-3">
+            <div
+              className="bg-gradient-to-r from-red-500 to-pink-500 h-3 rounded-full transition-all duration-300"
+              style={{ width: `${(step / 4) * 100}%` }}
+            />
           </div>
         </div>
 
         {/* Steps */}
         {step === 1 && (
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Paso 1: Nombre de esa persona especial</h3>
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold mb-6 text-gray-800">Paso 1: ¿Para quién es la dedicatoria?</h3>
+            <p className="text-gray-600 mb-4">Ingresa el nombre de la persona especial que recibirá esta dedicatoria</p>
             <Input
               placeholder="Nombre del destinatario"
               value={formData.recipientName}
               onChange={(e) => handleInputChange("recipientName", e.target.value)}
-              className="mb-4"
+              className="mb-6 text-lg py-3"
             />
             <button
               onClick={nextStep}
               disabled={!formData.recipientName.trim()}
-              className="px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed"
+              className="w-full px-6 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed hover:shadow-lg transition-all duration-300"
             >
-              Continuar
+              Continuar →
             </button>
           </div>
         )}
 
         {step === 2 && (
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Paso 2: Con mucho cariño,</h3>
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold mb-6 text-gray-800">Paso 2: ¿Quién envía la dedicatoria?</h3>
+            <p className="text-gray-600 mb-4">Ingresa tu nombre para personalizar el mensaje</p>
             <Input
               placeholder="Tu nombre"
               value={formData.senderName}
               onChange={(e) => handleInputChange("senderName", e.target.value)}
-              className="mb-4"
+              className="mb-6 text-lg py-3"
             />
-            <button onClick={prevStep} className="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-lg mr-4">
-              Anterior
-            </button>
-            <button
-              onClick={nextStep}
-              disabled={!formData.senderName.trim()}
-              className="px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed"
-            >
-              Continuar
-            </button>
+            <div className="flex gap-4">
+              <button
+                onClick={prevStep}
+                className="flex-1 px-6 py-4 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition-all duration-300"
+              >
+                ← Anterior
+              </button>
+              <button
+                onClick={nextStep}
+                disabled={!formData.senderName.trim()}
+                className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed hover:shadow-lg transition-all duration-300"
+              >
+                Continuar →
+              </button>
+            </div>
           </div>
         )}
 
         {step === 3 && (
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Paso 3: Tema y Estilo</h3>
-            <div className="mb-4">
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold mb-6 text-gray-800">Paso 3: Personaliza tu dedicatoria</h3>
+            <p className="text-gray-600 mb-6">Elige el tema y estilo que mejor represente tu mensaje</p>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Tema de la dedicatoria</label>
               <Select value={formData.theme} onValueChange={(value) => handleInputChange("theme", value)}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full py-3">
                   <SelectValue placeholder="Selecciona un tema" />
                 </SelectTrigger>
                 <SelectContent>
@@ -271,9 +321,11 @@ export default function SereneDigitalGift() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="mb-4">
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Estilo visual</label>
               <Select value={formData.style} onValueChange={(value) => handleInputChange("style", value)}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full py-3">
                   <SelectValue placeholder="Selecciona un estilo" />
                 </SelectTrigger>
                 <SelectContent>
@@ -285,53 +337,74 @@ export default function SereneDigitalGift() {
                 </SelectContent>
               </Select>
             </div>
-            <button onClick={prevStep} className="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-lg mr-4">
-              Anterior
-            </button>
-            <button
-              onClick={nextStep}
-              disabled={!formData.theme || !formData.style}
-              className="px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed"
-            >
-              Continuar
-            </button>
+
+            <div className="flex gap-4">
+              <button
+                onClick={prevStep}
+                className="flex-1 px-6 py-4 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition-all duration-300"
+              >
+                ← Anterior
+              </button>
+              <button
+                onClick={nextStep}
+                disabled={!formData.theme || !formData.style}
+                className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed hover:shadow-lg transition-all duration-300"
+              >
+                Continuar →
+              </button>
+            </div>
           </div>
         )}
 
         {step === 4 && (
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Paso 4: Mensaje Inspirador</h3>
-            <Select
-              value={formData.inspirationalPhrase}
-              onValueChange={(value) => handleInputChange("inspirationalPhrase", value)}
-            >
-              <SelectTrigger className="w-full mb-4">
-                <SelectValue placeholder="Selecciona una frase inspiradora" />
-              </SelectTrigger>
-              <SelectContent>
-                {inspirationalPhrases.map((phrase) => (
-                  <SelectItem key={phrase} value={phrase}>
-                    {phrase}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Textarea
-              placeholder="Escribe un mensaje personalizado (opcional)"
-              value={formData.customMessage}
-              onChange={(e) => handleInputChange("customMessage", e.target.value)}
-              className="mb-4"
-            />
-            <button onClick={prevStep} className="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-lg mr-4">
-              Anterior
-            </button>
-            <button
-              onClick={generateAndDownloadImage}
-              disabled={!formData.inspirationalPhrase}
-              className="px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed"
-            >
-              Generar y Descargar Imagen
-            </button>
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold mb-6 text-gray-800">Paso 4: Mensaje inspirador</h3>
+            <p className="text-gray-600 mb-6">Elige una frase especial y añade tu toque personal</p>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Frase inspiradora</label>
+              <Select
+                value={formData.inspirationalPhrase}
+                onValueChange={(value) => handleInputChange("inspirationalPhrase", value)}
+              >
+                <SelectTrigger className="w-full py-3">
+                  <SelectValue placeholder="Selecciona una frase inspiradora" />
+                </SelectTrigger>
+                <SelectContent>
+                  {inspirationalPhrases.map((phrase) => (
+                    <SelectItem key={phrase} value={phrase}>
+                      {phrase}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Mensaje personalizado (opcional)</label>
+              <Textarea
+                placeholder="Escribe un mensaje personalizado que salga del corazón..."
+                value={formData.customMessage}
+                onChange={(e) => handleInputChange("customMessage", e.target.value)}
+                className="min-h-[100px]"
+              />
+            </div>
+
+            <div className="flex gap-4">
+              <button
+                onClick={prevStep}
+                className="flex-1 px-6 py-4 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition-all duration-300"
+              >
+                ← Anterior
+              </button>
+              <button
+                onClick={generateAndDownloadImage}
+                disabled={!formData.inspirationalPhrase}
+                className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-lg disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed hover:shadow-lg transition-all duration-300"
+              >
+                🎁 Crear y Descargar Dedicatoria
+              </button>
+            </div>
           </div>
         )}
       </div>
